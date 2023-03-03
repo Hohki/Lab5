@@ -4,18 +4,23 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-public class GUI extends JFrame{
+public class GUI extends JFrame {
 	
 	public GUI() {
+		
 		JFrame calculator = new JFrame("Calculator");
 		calculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagConstraints c = new GridBagConstraints();
 		JPanel canvas = new JPanel();
 		canvas(canvas, c);
 		
-		JLabel display = new JLabel("0", SwingConstants.RIGHT);
+		
+		JLabel display = new JLabel();
 		display(display, c);
+		Situation situation = new Situation(display);
 		canvas.add(display, c);
+		
+		
 		
 		JPanel keypad = new JPanel(new GridLayout(4, 4));
 		keypad(keypad, c);
@@ -34,6 +39,8 @@ public class GUI extends JFrame{
 	}
 	
 	private void display(JLabel display, GridBagConstraints c) {
+		display.setText("0");
+		display.setHorizontalAlignment(SwingConstants.RIGHT);
 		display.setPreferredSize(new Dimension(400, 60));
 		display.setHorizontalTextPosition(JLabel.RIGHT);
 		Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
