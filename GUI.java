@@ -56,7 +56,7 @@ public class GUI extends JFrame {
 
 	//Fattar inte hur det här fungerar men jag klagar inte :)
 	private void keys(JPanel keypad, Situation situation) {
-		DigitButton sju = new DigitButton("7", situation, keypad);
+		new DigitButton("7", situation, keypad);
 		new DigitButton("8", situation, keypad);
 		new DigitButton("9", situation, keypad);
 		new BinOpButton("/", situation, keypad, intBinaryOperator = (x,y) -> {
