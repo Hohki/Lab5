@@ -3,15 +3,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public abstract class CalculatorButton extends JButton{
+public abstract class CalculatorButton extends JButton implements ActionListener {
     Situation situation;
-    public CalculatorButton(String str, Situation situation, ActionListener listener) {
+    public CalculatorButton(String str, Situation situation) {
         super(str);
         this.situation = situation;
         this.setBackground(Color.WHITE);
-        this.setPreferredSize(new Dimension(400, 400)); //Ändrar storleken på knappen
+        this.setPreferredSize(new Dimension(600, 600)); //Ändrar storleken på knappen
         this.setFont(new Font("Ariel", Font.BOLD,25)); //Ändrar typsnitt och storlek
-        this.addActionListener(listener);
+        this.addActionListener(this);
     }
 
     //Den abstrakta metoden som ska implementeras i varje knapp

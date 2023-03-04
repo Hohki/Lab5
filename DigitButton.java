@@ -1,14 +1,14 @@
 package Lab5;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 
 public class DigitButton extends CalculatorButton {
     Situation situation;
 
-    public DigitButton(String str, Situation situation, JPanel JPanel, ActionListener listener) {
-        super(str, situation, listener);
+    public DigitButton(String str, Situation situation, JPanel JPanel) {
+        super(str, situation);
         this.situation = situation;
         JPanel.add(this);
     }
@@ -29,5 +29,11 @@ public class DigitButton extends CalculatorButton {
             default:
                 break;
         }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("DigiButton has been called...");
+        transition();
     }
 }

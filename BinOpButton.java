@@ -2,24 +2,22 @@ package Lab5;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.util.function.IntBinaryOperator;
 
 public class BinOpButton extends CalculatorButton {
     private IntBinaryOperator intBinaryOperator;
 
-    public BinOpButton(String str, Situation situation, ActionListener listener, JPanel JPanel, IntBinaryOperator intBinaryOperator) {
-        super(str, situation, listener);
+    public BinOpButton(String str, Situation situation, JPanel JPanel, IntBinaryOperator intBinaryOperator) {
+        super(str, situation);
         this.intBinaryOperator = intBinaryOperator;
         JPanel.add(this);
-        System.out.println(this.intBinaryOperator);
     }
 
     public IntBinaryOperator intBinaryOperator() {
         return this.intBinaryOperator;
     }
 
-    //?????????????
     public void transition() {
         switch (situation.state) {
             case Input1, HasResult:
@@ -37,4 +35,9 @@ public class BinOpButton extends CalculatorButton {
         }
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("BinOpButton has been called...");
+        transition();
+    }
 }
