@@ -1,5 +1,6 @@
 package Lab5;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.function.IntBinaryOperator;
@@ -7,21 +8,33 @@ import java.util.function.IntBinaryOperator;
 public class BinOpButton extends CalculatorButton {
     private IntBinaryOperator intBinaryOperator;
 
-    public BinOpButton(String str, Situation situation, ActionListener listener, IntBinaryOperator intBinaryOperator) {
+    public BinOpButton(String str, Situation situation, ActionListener listener, JPanel JPanel, IntBinaryOperator intBinaryOperator) {
         super(str, situation, listener);
         this.intBinaryOperator = intBinaryOperator;
+        JPanel.add(this);
+        System.out.println(this.intBinaryOperator);
+    }
+
+    public IntBinaryOperator intBinaryOperator() {
+        return this.intBinaryOperator;
     }
 
     //?????????????
-    @Override
-    public void transition(int x, int y) {
-        if (situation.state == State.Input1 || situation.state == State.HasResult) {
-            situation.leftOperand = x;
-            situation.binaryOperator = this;
-            this.setColor(Color.RED);
-        } else if (situation.state == State.OpReady) {
-            this.setColor(Color.WHITE);
-            situation.binaryOperator = this;
+    public void transition() {
+        switch (situation.state) {
+            case Input1, HasResult:
+                situation.leftOperand = Integer.parseInt(situation.display.getText());
+                situation.binaryOperator = this;
+                situation.state = State.OpReady;
+                break;
+            case OpReady:
+                situation.binaryOperator.setColor(Color.WHITE);
+                situation.binaryOperator = this;
+                this.setColor(Color.RED);
+                situation.state = State.Input2;
+            default:
+                break;
         }
     }
+
 }
