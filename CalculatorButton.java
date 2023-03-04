@@ -12,10 +12,10 @@ public abstract class CalculatorButton extends JButton{
         this.setPreferredSize(new Dimension(400, 400)); //Ändrar storleken på knappen
         this.setFont(new Font("Ariel", Font.BOLD,25)); //Ändrar typsnitt och storlek
         this.addActionListener(listener);
-    };
+    }
 
     //Den abstrakta metoden som ska implementeras i varje knapp
-    public abstract void transition(int x, int y);
-    public void setColor(Color color) {this.setBackground(color);};
-    public String toString() {return this.getText();};
+    public abstract void transition();
+    public void setColor(Color color) {this.setBackground(color);}
+    public String toString() {return this.getText();}
 }
