@@ -25,18 +25,18 @@ public class GUI extends JFrame implements ActionListener {
 		keypad(keypad, c);
 		canvas.add(keypad, c);
 		keys(keypad, situation);
-		
+
 		calculator.add(canvas);
 		calculator.pack();
 		calculator.setVisible(true);
 	}
-	
+
 	private void canvas(JPanel canvas, GridBagConstraints c) {
 		canvas.setLayout(new GridBagLayout());
 		c.gridx = 0;
 		c.gridy = 0;
 	}
-	
+
 	private void display(JLabel display, GridBagConstraints c) {
 		display.setPreferredSize(new Dimension(400, 60));
 		display.setHorizontalTextPosition(JLabel.RIGHT);
