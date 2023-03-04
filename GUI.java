@@ -1,14 +1,13 @@
 package Lab5;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.function.IntBinaryOperator;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-public class GUI extends JFrame implements ActionListener {
-	IntBinaryOperator intBinaryOperator;
+public class GUI extends JFrame {
+	private IntBinaryOperator intBinaryOperator;
+	private Situation situation;
 	public GUI() {
 		JFrame calculator = new JFrame("Calculator");
 		calculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -19,7 +18,7 @@ public class GUI extends JFrame implements ActionListener {
 		JLabel display = new JLabel("0", SwingConstants.RIGHT);
 		display(display, c);
 		canvas.add(display, c);
-		Situation situation = new Situation(display);
+		this.situation = new Situation(display);
 
 		JPanel keypad = new JPanel(new GridLayout(4, 4));
 		keypad(keypad, c);
@@ -54,41 +53,37 @@ public class GUI extends JFrame implements ActionListener {
 		keypad.setBorder(border1);
 		c.gridy = 1;
 	}
-	
+
+	//Fattar inte hur det här fungerar men jag klagar inte :)
 	private void keys(JPanel keypad, Situation situation) {
-		new DigitButton("7", situation, keypad, this);
-		new DigitButton("8", situation, keypad, this);
-		new DigitButton("9", situation, keypad, this);
-		new BinOpButton("/", situation, this, keypad, intBinaryOperator = (x,y) -> {
+		DigitButton sju = new DigitButton("7", situation, keypad);
+		new DigitButton("8", situation, keypad);
+		new DigitButton("9", situation, keypad);
+		new BinOpButton("/", situation, keypad, intBinaryOperator = (x,y) -> {
 			return x/y ;
 		});
 
-		new DigitButton("4", situation, keypad, this);
-		new DigitButton("5", situation, keypad, this);
-		new DigitButton("6", situation, keypad, this);
-		new BinOpButton("*", situation, this, keypad, intBinaryOperator = (x,y) -> {
+		new DigitButton("4", situation, keypad);
+		new DigitButton("5", situation, keypad);
+		new DigitButton("6", situation, keypad);
+		new BinOpButton("*", situation, keypad, intBinaryOperator = (x,y) -> {
 			return x*y ;
 		});
 
-		new DigitButton("1", situation, keypad, this);
-		new DigitButton("2", situation, keypad, this);
-		new DigitButton("3", situation, keypad, this);
-		new BinOpButton("-", situation, this, keypad, intBinaryOperator = (x,y) -> {
+		new DigitButton("1", situation, keypad);
+		new DigitButton("2", situation, keypad);
+		new DigitButton("3", situation, keypad);
+		new BinOpButton("-", situation, keypad, intBinaryOperator = (x,y) -> {
 			return x-y ;
 		});
 
-		new DigitButton("0", situation, keypad, this);
-		new Equalsbutton(situation, keypad, this);
-		new CancelButton(situation, keypad, this);
-		new BinOpButton("+", situation, this, keypad, intBinaryOperator = (x,y) -> {
+		new DigitButton("0", situation, keypad);
+		new Equalsbutton(situation, keypad);
+		new CancelButton(situation, keypad);
+		new BinOpButton("+", situation, keypad, intBinaryOperator = (x,y) -> {
 			return x+y ;
 		});
 
-
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		System.out.println("An action has been performed...");
-	}
 }
