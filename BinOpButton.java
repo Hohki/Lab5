@@ -24,12 +24,13 @@ public class BinOpButton extends CalculatorButton {
                 situation.leftOperand = Integer.parseInt(situation.display.getText());
                 situation.binaryOperator = this;
                 situation.state = State.OpReady;
+                this.setColor(Color.RED);
                 break;
             case OpReady:
                 situation.binaryOperator.setColor(Color.WHITE);
                 situation.binaryOperator = this;
                 this.setColor(Color.RED);
-                situation.state = State.Input2;
+                break;
             default:
                 break;
         }

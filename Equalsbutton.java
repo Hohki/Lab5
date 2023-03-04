@@ -2,6 +2,7 @@ package Lab5;
 
 import javax.swing.*;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 
 public class Equalsbutton extends CalculatorButton {
@@ -19,6 +20,7 @@ public class Equalsbutton extends CalculatorButton {
             case Input2:
                 situation.display.setText("" + situation.binaryOperator.intBinaryOperator().applyAsInt(situation.leftOperand, Integer.parseInt(situation.display.getText())));
                 situation.state = State.HasResult;
+                situation.binaryOperator.setColor(Color.WHITE);
             default:
                 break;
         }

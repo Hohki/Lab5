@@ -16,16 +16,21 @@ public class DigitButton extends CalculatorButton {
     @Override
     public void transition() {
         switch (this.situation.state) {
-            case Input1, HasResult, Input2:
+            case Input1, Input2:
                 if (situation.display.getText().equals("0")) {
                     situation.display.setText("" + this.getText());
                 } else {
                     situation.display.setText("" +situation.display.getText() + this.getText());
                 }
                 break;
+            case HasResult:
+            	situation.state = State.Input1;
+            	situation.display.setText("" + this.getText());
+            	break;
             case OpReady:
                 situation.state = State.Input2;
                 situation.display.setText("" + this.getText());
+                break;
             default:
                 break;
         }

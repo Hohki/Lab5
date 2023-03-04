@@ -12,9 +12,19 @@ public class CancelButton extends CalculatorButton {
     }
 
     public void transition() {
-        situation.display.setText("0");
-        situation.state = State.Input1;
-        this.setColor(Color.WHITE);
+    	switch(situation.state) {
+    		case Input1, HasResult:
+    			situation.display.setText("0");
+            	situation.state = State.Input1;
+            	break;
+    		case OpReady, Input2:
+    			situation.display.setText("0");
+            	situation.state = State.Input1;
+            	situation.binaryOperator.setColor(Color.WHITE);
+            	break;
+            default:
+            	break;
+    	}
     }
 
     @Override
