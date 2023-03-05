@@ -3,6 +3,7 @@ package Lab5;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.InputMismatchException;
 import java.util.function.IntBinaryOperator;
 
 public class BinOpButton extends CalculatorButton {
@@ -21,10 +22,15 @@ public class BinOpButton extends CalculatorButton {
     public void transition() {
         switch (situation.state) {
             case Input1, HasResult:
-                situation.leftOperand = Integer.parseInt(situation.display.getText());
-                situation.binaryOperator = this;
-                situation.state = State.OpReady;
-                this.setColor(Color.RED);
+                try {
+                    situation.leftOperand = Integer.parseInt(situation.display.getText());
+                    situation.binaryOperator = this;
+                    situation.state = State.OpReady;
+                    this.setColor(Color.RED);
+
+                } catch (Exception e) {
+                    System.out.println("Max integer value reached...");
+                }
                 break;
             case OpReady:
                 situation.binaryOperator.setColor(Color.WHITE);

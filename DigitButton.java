@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 
 
 public class DigitButton extends CalculatorButton {
-    Situation situation;
+    private Situation situation;
 
     public DigitButton(String str, Situation situation, JPanel JPanel) {
         super(str, situation);

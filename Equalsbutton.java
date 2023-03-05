@@ -18,9 +18,14 @@ public class Equalsbutton extends CalculatorButton {
             case Input1, HasResult, OpReady:
                 break;
             case Input2:
-                situation.display.setText("" + situation.binaryOperator.intBinaryOperator().applyAsInt(situation.leftOperand, Integer.parseInt(situation.display.getText())));
-                situation.state = State.HasResult;
-                situation.binaryOperator.setColor(Color.WHITE);
+                try {
+                    situation.display.setText("" + situation.binaryOperator.intBinaryOperator().applyAsInt(situation.leftOperand, Integer.parseInt(situation.display.getText())));
+                    situation.state = State.HasResult;
+                    situation.binaryOperator.setColor(Color.WHITE);
+
+                } catch (Exception e) {
+                    throw new ArithmeticException("Kan inte dela med noll..");
+                }
             default:
                 break;
         }

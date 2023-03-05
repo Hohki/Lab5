@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public abstract class CalculatorButton extends JButton implements ActionListener {
-    Situation situation;
+    protected Situation situation;
     public CalculatorButton(String str, Situation situation) {
         super(str);
         this.situation = situation;
