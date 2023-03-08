@@ -1,3 +1,4 @@
+// Gabriel Axheim Gustafsson, Albin Kullberg, Khaled Chaaban
 package Lab5;
 
 import javax.swing.*;
