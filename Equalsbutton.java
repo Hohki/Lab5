@@ -13,7 +13,7 @@ public class Equalsbutton extends CalculatorButton {
 
 
     @Override
-    public void transition() {
+    public void transition() throws ArithmeticException {
         switch (situation.state) {
             case Input1, HasResult, OpReady:
                 break;
@@ -24,7 +24,9 @@ public class Equalsbutton extends CalculatorButton {
                     situation.binaryOperator.setColor(Color.WHITE);
 
                 } catch (Exception e) {
-                    throw new ArithmeticException("Kan inte dela med noll..");
+                	System.out.println("Kan inte dela med 0!");
+                    situation.state = State.Input1;
+                    situation.binaryOperator.setColor(Color.WHITE);
                 }
             default:
                 break;
