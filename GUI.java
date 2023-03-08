@@ -9,6 +9,7 @@ import javax.swing.border.Border;
 public class GUI extends JFrame {
 	private IntBinaryOperator intBinaryOperator;
 	private Situation situation;
+
 	public GUI() {
 		JFrame calculator = new JFrame("Calculator");
 		calculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,13 +42,13 @@ public class GUI extends JFrame {
 		display.setPreferredSize(new Dimension(400, 60));
 		display.setHorizontalTextPosition(JLabel.RIGHT);
 		Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
-		Font font = new Font("Ariel", Font.BOLD,25);
+		Font font = new Font("Ariel", Font.BOLD, 25);
 		display.setOpaque(true);
 		display.setBackground(Color.WHITE);
 		display.setFont(font);
 		display.setBorder(border);
 	}
-	
+
 	private void keypad(JPanel keypad, GridBagConstraints c) {
 		keypad.setPreferredSize(new Dimension(400, 400));
 		Border border1 = BorderFactory.createLineBorder(Color.BLACK, 1);
@@ -55,34 +56,34 @@ public class GUI extends JFrame {
 		c.gridy = 1;
 	}
 
-	//Fattar inte hur det här fungerar men jag klagar inte :)
+	// Fattar inte hur det här fungerar men jag klagar inte :)
 	private void keys(JPanel keypad, Situation situation) {
 		new DigitButton("7", situation, keypad);
 		new DigitButton("8", situation, keypad);
 		new DigitButton("9", situation, keypad);
-		new BinOpButton("/", situation, keypad, intBinaryOperator = (x,y) -> {
-			return x/y ;
+		new BinOpButton("/", situation, keypad, intBinaryOperator = (x, y) -> {
+			return x / y;
 		});
 
 		new DigitButton("4", situation, keypad);
 		new DigitButton("5", situation, keypad);
 		new DigitButton("6", situation, keypad);
-		new BinOpButton("*", situation, keypad, intBinaryOperator = (x,y) -> {
-			return x*y ;
+		new BinOpButton("*", situation, keypad, intBinaryOperator = (x, y) -> {
+			return x * y;
 		});
 
 		new DigitButton("1", situation, keypad);
 		new DigitButton("2", situation, keypad);
 		new DigitButton("3", situation, keypad);
-		new BinOpButton("-", situation, keypad, intBinaryOperator = (x,y) -> {
-			return x-y ;
+		new BinOpButton("-", situation, keypad, intBinaryOperator = (x, y) -> {
+			return x - y;
 		});
 
 		new DigitButton("0", situation, keypad);
 		new Equalsbutton(situation, keypad);
 		new CancelButton(situation, keypad);
-		new BinOpButton("+", situation, keypad, intBinaryOperator = (x,y) -> {
-			return x+y ;
+		new BinOpButton("+", situation, keypad, intBinaryOperator = (x, y) -> {
+			return x + y;
 		});
 
 	}

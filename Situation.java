@@ -8,7 +8,7 @@ public class Situation {
 	JLabel display;
 	BinOpButton binaryOperator;
 	int leftOperand;
-	
+
 	Situation(JLabel display) {
 		this.display = display;
 	}
